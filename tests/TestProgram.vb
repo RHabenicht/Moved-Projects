@@ -83,7 +83,7 @@ Public Module TestProgram
     End Sub
 
     Private Sub TestSaveOpen(folder As String)
-        Dim path As String = Path.Combine(folder, "character.json")
+        Dim path As String = System.IO.Path.Combine(folder, "character.json")
         Dim c As New CharacterSheet With {.Name = "Míra & <Runner>", .Notes = "Line 1" & vbLf & "Line 2", .LegacyOriginal = "[General]" & vbCrLf & "CharName=Demo"}
         c.Attributes("Body") = 5
         c.Skills.Add(New SkillEntry With {.Name = "Pistols", .Rating = 6})
@@ -100,7 +100,7 @@ Public Module TestProgram
     End Sub
 
     Private Sub TestUnsafeFiles(folder As String)
-        Dim path As String = Path.Combine(folder, "invalid.json")
+        Dim path As String = System.IO.Path.Combine(folder, "invalid.json")
         File.WriteAllText(path, "{not-json")
         ExpectFailure(Sub() CharacterSheet.Open(path))
         File.WriteAllText(path, "{""Edition"":2,""Name"":""Unsupported""}")
@@ -133,7 +133,7 @@ Public Module TestProgram
 
     Private Sub TestHtml(folder As String)
         Dim c As New CharacterSheet With {.Name = "<script>alert(1)</script>", .Notes = "2 < 3 & 4 > 2"}
-        Dim path As String = Path.Combine(folder, "character.html")
+        Dim path As String = System.IO.Path.Combine(folder, "character.html")
         ExportService.WriteHtml(c, path)
         Dim html As String = File.ReadAllText(path, Encoding.UTF8)
         Require(html.Contains("&lt;script&gt;", StringComparison.Ordinal), "Character name not HTML-escaped")
@@ -147,7 +147,7 @@ Public Module TestProgram
         For i As Integer = 0 To 90
             c.Skills.Add(New SkillEntry With {.Name = "Skill " & i.ToString(), .Rating = 3})
         Next
-        Dim path As String = Path.Combine(folder, "character.pdf")
+        Dim path As String = System.IO.Path.Combine(folder, "character.pdf")
         ExportService.WritePdf(c, path)
         Dim pdf As String = Encoding.Latin1.GetString(File.ReadAllBytes(path))
         Require(pdf.StartsWith("%PDF-1.4", StringComparison.Ordinal) AndAlso pdf.Contains("%%EOF", StringComparison.Ordinal), "Malformed PDF wrapper")
