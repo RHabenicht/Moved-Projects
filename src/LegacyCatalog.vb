@@ -9,6 +9,7 @@ Imports System.Text.RegularExpressions
 Public Class CatalogEntry
     Public Property Name As String = ""
     Public Property Category As String = ""
+    Public Property Kind As String = ""
     Public Property Source As String = ""
     Public Property OriginalLine As String = ""
     Public Overrides Function ToString() As String
@@ -69,6 +70,7 @@ Public Class LegacyCatalog
             _items.Add(New CatalogEntry With {
                 .Name = name.Replace("_"c, " "c),
                 .Category = If(kind = "Skill", currentGroup, kind),
+                .Kind = kind,
                 .Source = If(citation.Success, citation.Value, ""),
                 .OriginalLine = raw
             })
