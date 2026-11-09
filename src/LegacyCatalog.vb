@@ -39,7 +39,7 @@ Public Class LegacyCatalog
         }
         _items.Clear()
         For Each entry As KeyValuePair(Of String, String) In files
-            Dim path As String = Path.Combine(folder, entry.Key)
+            Dim path As String = System.IO.Path.Combine(folder, entry.Key)
             If File.Exists(path) Then ReadFile(path, entry.Value)
         Next
     End Sub
