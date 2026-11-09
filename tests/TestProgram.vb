@@ -20,8 +20,10 @@ Public Module TestProgram
         Try
             RunTest("New character defaults and basic validation", Sub() TestDefaults())
             RunTest("Rejects duplicate priorities and invalid ratings", Sub() TestInvalid())
+            RunTest("SR3 Priority budgets, metatypes and natural statistics", Sub() TestPriorityRules())
             RunTest("JSON round-trip and overwrite", Sub() TestSaveOpen(scratch))
             RunTest("Rejects unsupported edition and malformed JSON", Sub() TestUnsafeFiles(scratch))
+            RunTest("Rejects future JSON fields and unsupported file versions", Sub() TestForwardCompatibility(scratch))
             RunTest("Original NSRCG .sr3 import retains source and data", Sub() TestLegacy(Path.Combine(root, "samples", "archStreetSamurai.sr3")))
             RunTest("Catalog reads approved sources and preserves skill kind", Sub() TestCatalog(Path.Combine(root, "LegacyData")))
             RunTest("HTML export escapes user input", Sub() TestHtml(scratch))
@@ -82,6 +84,38 @@ Public Module TestProgram
         Require(warnings.Contains("Skill name/rating", StringComparison.Ordinal), "Skill rating undetected")
     End Sub
 
+    Private Sub TestPriorityRules()
+        Require(PriorityRules.AttributeBudget("A") = 30 AndAlso PriorityRules.AttributeBudget("B") = 27 AndAlso PriorityRules.AttributeBudget("E") = 18, "SR3 attribute priority table differs")
+        Require(PriorityRules.SkillBudget("A") = 50 AndAlso PriorityRules.SkillBudget("C") = 34 AndAlso PriorityRules.SkillBudget("E") = 27, "SR3 skill priority table differs")
+        Require(PriorityRules.StartingResources("A") = 1000000 AndAlso PriorityRules.StartingResources("B") = 400000 AndAlso PriorityRules.StartingResources("E") = 5000, "SR3 resource priority table differs")
+        Require(PriorityRules.RequiredRacePriority("Human") = "E" AndAlso PriorityRules.RequiredRacePriority("Elf") = "C" AndAlso PriorityRules.RequiredRacePriority("Dwarf") = "D", "SR3 race-priority table differs")
+        Dim c As New CharacterSheet()
+        Require(c.ValidateBasic().Count = 0, "Standard Human default should pass")
+        c.Metatype = "Dwarf"
+        c.Priorities("Race") = "D"
+        c.Priorities("Magic") = "E"
+        Require(c.ValidateBasic().Count = 0, "Valid Dwarf priorities should pass")
+        Require(PriorityRules.NaturalAttribute("Dwarf", "Body", 1) = 2 AndAlso PriorityRules.NaturalAttribute("Dwarf", "Strength", 1) = 3, "Dwarf adjustments incorrect")
+        Require(PriorityRules.NaturalAttribute("Elf", "Charisma", 1) = 3, "Elf adjustments incorrect")
+        Require(PriorityRules.NaturalAttribute("Ork", "Intelligence", 2) = 1, "Ork adjustments incorrect")
+        Require(PriorityRules.NaturalAttribute("Troll", "Strength", 1) = 5, "Troll adjustments incorrect")
+        c.Attributes("Quickness") = 4
+        c.Attributes("Intelligence") = 4
+        c.Attributes("Willpower") = 5
+        Require(PriorityRules.NaturalReaction(c) = 4, "Natural Reaction incorrect")
+        Require(PriorityRules.NaturalCombatPool(c) = 7, "Natural Combat Pool incorrect")
+        For Each attr As String In CharacterSheet.AttributeNames
+            c.Attributes(attr) = 6
+        Next
+        Require(c.ValidateBasic().Any(Function(msg) msg.Contains("allocation exceeds", StringComparison.Ordinal)), "Attribute overspending was not detected")
+        c.Metatype = "Elf"
+        Require(c.ValidateBasic().Any(Function(msg) msg.Contains("Race priority C", StringComparison.Ordinal)), "Elf with wrong race priority was not rejected")
+        c.Metatype = "Ork"
+        c.Attributes("Charisma") = 1
+        c.Attributes("Intelligence") = 1
+        Require(c.ValidateBasic().Any(Function(msg) msg.Contains("racial modification", StringComparison.Ordinal)), "Racial floor violation was not detected")
+    End Sub
+
     Private Sub TestSaveOpen(folder As String)
         Dim path As String = System.IO.Path.Combine(folder, "character.json")
         Dim c As New CharacterSheet With {.Name = "Míra & <Runner>", .Notes = "Line 1" & vbLf & "Line 2", .LegacyOriginal = "[General]" & vbCrLf & "CharName=Demo"}
@@ -107,6 +141,18 @@ Public Module TestProgram
         ExpectFailure(Sub() CharacterSheet.Open(path))
         Dim unsupported As New CharacterSheet With {.Edition = 2}
         ExpectFailure(Sub() unsupported.Save(path))
+    End Sub
+
+    Private Sub TestForwardCompatibility(folder As String)
+        Dim file As String = System.IO.Path.Combine(folder, "unsupported.json")
+        File.WriteAllText(file, "{""Format"":""nsrcgii.vbnet.9"",""Edition"":3}")
+        ExpectFailure(Sub() CharacterSheet.Open(file))
+        File.WriteAllText(file, "{""Format"":""nsrcgii.vbnet.1"",""Edition"":3,""FutureCharacterField"":42}")
+        ExpectFailure(Sub() CharacterSheet.Open(file))
+        File.WriteAllText(file, "{""Format"":""nsrcgii.vbnet.1"",""Edition"":3,""Skills"":[{""Name"":""Pistols"",""Rating"":6,""FutureSkillFlag"":true}]}")
+        ExpectFailure(Sub() CharacterSheet.Open(file))
+        Dim c As New CharacterSheet With {.Format = "nsrcgii.vbnet.9"}
+        ExpectFailure(Sub() c.Save(file))
     End Sub
 
     Private Sub TestLegacy(sample As String)
@@ -211,6 +257,11 @@ Public Module TestProgram
             catalogList.SelectedIndex = 0
             InvokePrivate(ui, "AddCatalogItem")
             Require(skills.Items.Count = 1 AndAlso equipment.Items.Count = 0, "Martial Arts skill added as equipment")
+            Dim ch As CharacterSheet = PrivateField(Of CharacterSheet)(ui, "_character")
+            ch.Metatype = "Nonstandard imported race"
+            InvokePrivate(ui, "RefreshCharacter")
+            Dim race As ComboBox = PrivateField(Of ComboBox)(ui, "raceBox")
+            Require(Convert.ToString(race.SelectedItem) = "Nonstandard imported race", "Unknown imported metatype was silently replaced")
             ui.Dispose() ' Do not trigger a confirmation dialog in CI.
         End Using
     End Sub
