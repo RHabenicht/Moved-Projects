@@ -400,6 +400,7 @@ Public Class MainForm
     Private Sub RemoveSkill()
         Dim n As Integer = skillsList.SelectedIndex
         If n < 0 Then Return
+        SyncCharacter()
         _character.Skills.RemoveAt(n)
         RefreshCharacter()
         SetDirty()
@@ -409,7 +410,7 @@ Public Class MainForm
         Dim entry As CatalogEntry = TryCast(catalogList.SelectedItem, CatalogEntry)
         If entry Is Nothing Then Return
         SyncCharacter()
-        If entry.Category.Contains("skill", StringComparison.OrdinalIgnoreCase) Then
+        If entry.Kind.Equals("Skill", StringComparison.OrdinalIgnoreCase) Then
             _character.Skills.Add(New SkillEntry With {.Name = entry.Name, .Rating = 1})
         Else
             _character.Equipment.Add(New EquipmentEntry With {.Name = entry.Name, .Category = entry.Category, .Source = entry.Source})
@@ -422,6 +423,7 @@ Public Class MainForm
     Private Sub RemoveEquipment()
         Dim n As Integer = equipmentList.SelectedIndex
         If n < 0 Then Return
+        SyncCharacter()
         _character.Equipment.RemoveAt(n)
         RefreshCharacter()
         SetDirty()
