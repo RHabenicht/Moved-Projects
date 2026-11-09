@@ -48,6 +48,6 @@ The editor can also browse another original NSRCG data directory via **File → 
 - No Windows machine, .NET SDK or VB.NET compiler was available for compilation or GUI acceptance testing while preparing this version.
 - No legacy companion EXE files are run or installed.
 
-## Repository
+## GitHub destination
 
-This repository is the Visual Basic .NET rewrite of NSRCG II. `RHabenicht/RunnerForge` is a separate port and is not modified here.
+The Visual Basic source and filtered original catalog files are published at the **private repository** `RHabenicht/NSRCG-II`. GitHub Actions produces a Windows x64 build artifact for each main-branch commit. `RHabenicht/RunnerForge` is a separate port and is not modified by this repository. See `GITHUB_PUBLISH.md` for the repository status.
