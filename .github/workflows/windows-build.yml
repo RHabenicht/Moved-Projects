@@ -23,6 +23,9 @@ jobs:
         run: python tests/smoke_check.py
       - name: Build VB.NET Windows Forms application
         run: dotnet build src/NSRCGII.vbproj -c Release
+      - name: Run VB.NET regression suite and WinForms smoke tests
+        shell: pwsh
+        run: dotnet run --project tests/NSRCGII.TestHarness.vbproj -c Release
       - name: Publish self-contained Windows x64 executable
         shell: pwsh
         run: ./publish-win-x64.ps1
