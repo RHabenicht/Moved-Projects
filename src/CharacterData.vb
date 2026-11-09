@@ -6,6 +6,7 @@ Imports System.IO
 Imports System.Linq
 Imports System.Text
 Imports System.Text.Json
+Imports System.Text.Json.Serialization
 
 Public Class SkillEntry
     Public Property Name As String = ""
@@ -63,7 +64,7 @@ Public Class CharacterSheet
         If Edition <> 3 Then issues.Add("This version supports Shadowrun Third Edition only.")
         Dim assigned As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase)
         For Each key As String In PriorityNames
-            Dim value As String = Priorities(key).Trim().ToUpperInvariant()
+            Dim value As String = If(Priorities(key), "").Trim().ToUpperInvariant()
             If value.Length <> 1 OrElse "ABCDE".IndexOf(value, StringComparison.Ordinal) < 0 Then
                 issues.Add("Invalid priority for " & key & ".")
             ElseIf Not assigned.Add(value) Then
@@ -73,7 +74,28 @@ Public Class CharacterSheet
         For Each key As String In AttributeNames
             If Attributes(key) < 1 OrElse Attributes(key) > 6 Then issues.Add(key & " base rating must be 1–6.")
         Next
+        Dim required As String = PriorityRules.RequiredRacePriority(Metatype)
+        If required = "" Then
+            issues.Add("Unknown metatype: " & Metatype)
+        ElseIf Not String.Equals(If(Priorities("Race"), "").Trim(), required, StringComparison.OrdinalIgnoreCase) Then
+            issues.Add(Metatype & " must have Race priority " & required & " under core SR3 rules.")
+        End If
+
+        Dim allowance As Integer = PriorityRules.AttributeBudget(Priorities("Attributes"))
+        Dim allocated As Integer = PriorityRules.AttributeSpent(Me)
+        If allowance > 0 AndAlso allocated > allowance Then
+            issues.Add("Attribute allocation exceeds priority budget: " & allocated.ToString() & " / " & allowance.ToString() & ".")
+        End If
+        For Each key As String In AttributeNames
+            If PriorityRules.NaturalAttribute(Metatype, key, Attributes(key)) < 1 Then
+                issues.Add(key & " becomes less than 1 after racial modification.")
+            End If
+        Next
         For Each item As SkillEntry In Skills
+            If item Is Nothing Then
+                issues.Add("Character includes an invalid empty skill record.")
+                Continue For
+            End If
             If String.IsNullOrWhiteSpace(item.Name) OrElse item.Rating < 1 OrElse item.Rating > 6 Then
                 issues.Add("Skill name/rating needs review: " & item.Name)
             End If
@@ -84,6 +106,7 @@ Public Class CharacterSheet
     Public Sub Save(path As String)
         Normalize()
         If Edition <> 3 Then Throw New InvalidDataException("Only SR3 characters are supported.")
+        If Not String.Equals(Format, "nsrcgii.vbnet.1", StringComparison.Ordinal) Then Throw New InvalidDataException("Unsupported character file format.")
         Dim options As New JsonSerializerOptions With {.WriteIndented = True}
         Dim content As String = JsonSerializer.Serialize(Me, options)
         Dim temp As String = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.IO.Path.GetFullPath(path)), ".nsrcg-save-" & Guid.NewGuid().ToString("N") & ".tmp")
@@ -97,10 +120,15 @@ Public Class CharacterSheet
 
     Public Shared Function Open(path As String) As CharacterSheet
         Dim text As String = File.ReadAllText(path, Encoding.UTF8)
-        Dim result As CharacterSheet = JsonSerializer.Deserialize(Of CharacterSheet)(text)
+        Dim options As New JsonSerializerOptions With {
+            .UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow,
+            .PropertyNameCaseInsensitive = True
+        }
+        Dim result As CharacterSheet = JsonSerializer.Deserialize(Of CharacterSheet)(text, options)
         If result Is Nothing Then Throw New InvalidDataException("Invalid character file.")
         result.Normalize()
         If result.Edition <> 3 Then Throw New InvalidDataException("Only SR3 characters are supported.")
+        If Not String.Equals(result.Format, "nsrcgii.vbnet.1", StringComparison.Ordinal) Then Throw New InvalidDataException("Unsupported character file format.")
         Return result
     End Function
 
