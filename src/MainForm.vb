@@ -264,8 +264,9 @@ Public Class MainForm
         Try
             nameBox.Text = _character.Name
             realNameBox.Text = _character.RealName
+            ' Never replace an unknown imported metatype with Human on display.
+            If Not raceBox.Items.Contains(_character.Metatype) Then raceBox.Items.Add(_character.Metatype)
             raceBox.SelectedItem = _character.Metatype
-            If raceBox.SelectedIndex < 0 Then raceBox.SelectedIndex = 0
             notesBox.Text = _character.Notes
             For Each key As String In CharacterSheet.AttributeNames
                 attributes(key).Value = Math.Max(1, Math.Min(6, _character.Attributes(key)))
@@ -293,8 +294,18 @@ Public Class MainForm
         If _updating Then Return
         SyncCharacter()
         Dim warnings As List(Of String) = _character.ValidateBasic()
-        summaryBox.Text = If(warnings.Count = 0, "Basic value checks passed. Full SR3 rules are not implemented.", String.Join(Environment.NewLine, warnings)) & Environment.NewLine &
-                          "Skills: " & _character.Skills.Count.ToString() & " | Equipment: " & _character.Equipment.Count.ToString()
+        Dim attributeBudget As Integer = PriorityRules.AttributeBudget(_character.Priorities("Attributes"))
+        Dim attributeSpent As Integer = PriorityRules.AttributeSpent(_character)
+        Dim skillBudget As Integer = PriorityRules.SkillBudget(_character.Priorities("Skills"))
+        Dim resourceBudget As Integer = PriorityRules.StartingResources(_character.Priorities("Resources"))
+        summaryBox.Text = If(warnings.Count = 0, "Basic priority and attribute checks passed.", String.Join(Environment.NewLine, warnings)) &
+                          Environment.NewLine & "Attribute points: " & attributeSpent.ToString() & " / " & attributeBudget.ToString() &
+                          Environment.NewLine & "Skill allotment: " & skillBudget.ToString() & " (spending rules pending)" &
+                          Environment.NewLine & "Starting resources: ¥" & resourceBudget.ToString("N0") & " (purchases not deducted)" &
+                          Environment.NewLine & "Natural Reaction: " & PriorityRules.NaturalReaction(_character).ToString() &
+                          " | Natural Combat Pool: " & PriorityRules.NaturalCombatPool(_character).ToString() &
+                          Environment.NewLine & "Skills: " & _character.Skills.Count.ToString() & " | Equipment: " & _character.Equipment.Count.ToString() &
+                          Environment.NewLine & "Cyberware, magic and full SR3 rules validation remain incomplete."
     End Sub
 
     Private Function ConfirmAbandon() As Boolean
