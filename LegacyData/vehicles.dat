@@ -1,0 +1,392 @@
+!vehicle.DAT - Vehicle data file - JW 960204 (Update from PM 960201)
+!-------------------------------------------------------------
+!A Few Notes:
+! Added support for Book-page and ability to exclude those books from listings
+! I will eliminate duplicate entries and add SR3 support 990813            - Mike
+! Walter Scheper <ratlaw@bigfoot.com>  for Rigger 3 addins...
+! Josef Wegner: added Target: Wastelands entries 01/06/03
+! Types (Formats):
+!-------
+0-1|Edged weapon|8|Concealability|Reach|Damage|Weight|Availability|$Cost|Street Index|Book.Page|
+0-2|Bow and crossbow|9|Concealability|Str.Min.|Damage|Weight|Availability|$Cost|Street Index|Legal|Book.Page|
+0-3|Firearms|10|Concealability|Ammunition|Mode|Damage|Weight|Availability|$Cost|Street Index|Accessories|Book.Page|
+0-4|Rockets and Missiles|9|Intelligence|Damage|Blast|Scatter|Weight|Availability|$Cost|Street Index|Book.Page|
+0-5|Ammunition|7|Concealability|Damage|Weight|Availability|$Cost|Street Index|Book.Page|
+0-6|Firearms Accessories|8|Mount|Concealability|Rating|Weight|Availability|$Cost|Street Index|Book.Page|
+0-7|Explosives|7|Concealability|Rating|Weight|Availability|$Cost|Street Index|Book.Page|
+0-8|Clothing and Armor|8|Concealability|Ballistic|Impact|Weight|Availability|$Cost|Street Index|Book.Page|
+0-9|S+S Vision Enhancers|7|Concealability|Magnification|Weight|Availability|$Cost|Street Index|Book.Page|
+0-10|Surveillance and Security|6|Concealability|Weight|Availability|$Cost|Street Index|Book.Page|
+0-11|Custom Gear|6|Concealability|Weight|$Cost|Street Index|Availability|Book.Page|
+0-12|Cyberdeck Other|4|Availability|$Cost|Street Index|Book.Page|
+0-13|Biotech|6|Rating|Availability|Weight|$Cost|Street Index|Book.Page|
+0-14|Lifestyle|6|Concealability|Weight|Availability|$Cost|Street Index|Book.Page|
+0-15|Magical Equipment|4|Availability|$Cost|Street Index|Book.Page|
+0-17|Cars|10|Handling|Speed|Body|Armor|Sig|Apilot|Availability|$Cost|Street Index|Book.Page|
+0-18|Vehiclegear|4|Availability|$Cost|Street Index|Book.Page|
+0-19|VehicleFire|9|Type|Ammunition|Mode|Damage|Weight|Availability|$Cost|Street Index|Book.Page|
+0-21|Stuff With Ratings|7|Concealability|Rating|Weight|Availability|$Cost|Street Index|Book.Page|
+0-22|Drugs|7|Addiction|Tolerance|Edge|Availability|$Cost|Street Index|Book.Page|
+0-23|Vehicle modifications|9|$Cost|Availability|Street Index|Equipment|Base Time/Skill Test|CF|Load|Notes|Book.Page|
+0-24|Cars2|12|Handling|Speed/Accel|Body/Armor|Sig/Autonav|Pilot/Sensor|Cargo/Load|Seating|$Cost|Availability|Street Index|Notes|Book.Page|
+0-25|Lifestyle2|2|$Cost|Book.Page|
+0-26|Extras|5|$Cost|Availability|Street Index|Weight|Book.Page|
+1-Vehicles
+2-Bikes
+3-Choppers
+3-Off Road Bikes
+3-Racing Bikes
+4-* Honda Nata450                  17|3/5|200/9|2|0|2|0|2/1day|15000|1|tss.6|
+4-* Honda Vector (Racing)          17|2/10|300/25|2|0|1|4|2/1day|80000|1|tss.6|
+4-* Honda Vector (Gasoline)        17|3/8|210/15|2|0|2|1|2/1day|20000|1|tss.6|
+4-* Honda Vector (Police/Rescue)   17|3/6|240/18|2|3|3|4|2/1day|50000|1|tss.6|
+4-* Honda Vector (Sports)          17|3/6|240/16|2|6|1|3|2/1day|25000|1|tss.6|
+3-Scooters
+4-* Hyundai Cityroller             17|3/6|75/3|2|0|5|0|2/1day|5000|1|tss.6|
+4-* Messerschmitt-Kawasaki 2050    17|4/6|60/4|2|0|5|1|2/1day|9000|1|tss.6|
+2-Boats
+3-Skiffs
+3-Speedboats
+3-Sport Cruisers
+3-Water Scooters
+3-Yachts
+3-Others
+2-Cars
+3-Armored Personnel Carriers(APCs)
+4-* BAE Agincourt APC              24|4/4|80/6|7/6|5/3|-/0|48/1000|1+1+2b|256700|13/13days|3.00|Medium turret (heavy mortar 5 CF Ammo Bin), Electronics port (with Rating 3 radio)|sota.78
+4-* Ruhr. Falkener Air Defense APC 24|4/4|90/7|7/6|4/2|-/8|22.5/1010|1+2+1b|619600|31/1month|3.00| ECCM 6, ECD 4, EnviroSeal (Gas with Cabin Overpressure), Medium Turret (Vigilant Autocannon on AA-mount 15 CF Ammo Bin Medium Launch Control System 8 Internal Missile Mounts), Radar Absorbent Materials 1 (factored in), Electronics Port (with Rating 3 Radio), Thermal Baffles 1 (factored in)|sota.78
+4-* Ruhr. Frettchen                24|4/4|85/6|10/22|11/2|-/10|10/1445|4|16800000|-|4.00|Amphibious Operation 3, Contingency Maneuver Controls 3, Drive-by-Wire 2, ECD 6, ECCM 9, ED 6, EnviroSeal (gas water engine), Large Smoke Projector, Life Support(100 man-hours), Medium Turret(AA capable 6 CF for 6000 rounds of HMG ammo), Radar Absorbent Materials 3, Rigger Adaptation, Ruthenium Polymer Masking (with 40 picture files), Smart Materials|sota.78
+4-* Ruhr. Keller A4                24|4/4|120/10|10/28|2/2|-/7|12/1775|4|4600000|-|4.00|Amphibious Operation 3, Contingency Maneuver Controls 9, Drive-by-Wire 1, EnviroSeal(gas water engine), 2x4 External Rocket Mounts, Large Smoke Projector, Large Turret(1.6 CF ammo bin for 160 railgun slugs), Life Support(100 Man-Hours), Medium Launch Control Systems, Micro-turret(AA capable Recoil Adjustment 4 0.5 CF ammo bin for 5000 rds HVAR ammo), Rigger Adaption, Smart Armor System, Smart Materials|sota.78
+4-* Ruhr. Leopard III              24|4/4|90/8|12/40|4/2|-/8|33/2095|3|7290000|-|4.00|Contingency Maneuver Controls 6, Drive-by-Wire 2, Rigger Adaptation, EnviroSeal(gas water engine), 2x4 External Rocket Mounts, Extra-Large Turret(0.8 CF Ammo Bin for 80 railgun projectiles), Large Smoke Projector, Life Support(150 man-hours), Medium Launch Control System, Micro-turret(AA capable Recoil Adjustment 4 1 CF Ammo Bin for HVAR ammo), Radar Absorbent Materials 2, Smart Materials, Thermal Baffles 2, Turbocharging 1|sota.78
+4-* Ruhrmetall Wolf II AFV APC     24|3/5|105/8|6/12|2/2|-/-|9/900|6|332200|26/26days|3.00|EnviroSeal (with gas seal and cabin overpressure), Life Support (60 man-hours), Runflat Tires, Small Turret (AA capable), Thermal Baffles 2, Turbocharging 2|sota.78
+4-* S-D Kreuzritter Propelled Gun  24|5/5|75/6|7/6|2/3|-/2|16/2000|1+1+3b|279400|14/14days|3.00|EnviroSeal (with gas seal and cabin overpressure), Medium Turret (Light Howitzer 10 CF Ammo Bin), Electronics Port (with Rating 3 Radio)|sota.78
+4-* U-D Semaphore Command Center   24|4/4|90/7|7/6|4/4|-/7|18.75/3507|1+2+1+2|1196500|NA|3.00|ECM8, ECCM8, ED5, ECD6, Electronics Port (with Remote Control Deck 6 Rigger Protocol Emulation Module 6 Signal Amplifier 6), Remote Control Encryption Unit 6, Small Remote Turret (2 CF Ammo Bin), 4 Additional Electronics Ports|sota.78
+3-Industrial Movers
+3-Limousines
+3-RVs
+3-Sand Buggies
+4-* Rover Ascot                    24|3/2|90/9|3/6|5/2|-/0|3/120|2|50000|3/72hrs|2|Amphibious OPs Package I, Enviroseal (Water), optional Underwater Package includes Enviroseal (engine) and Amphibious ops Package II|tss.6|
+3-Sedans
+4-* Chrysler-Nissan Cirrus         24|3/8|105/8|3/0|3/2|-/0|8/150|2+2|30000|2/24hrs|1|APPS|tss.6|
+4-* EMC Eurocar (M)                24|4/8|100/6|3/0|3/2|-/0|4/80|2+2|25000|2/24hrs|1||tss.6
+4-* EMC Eurocar (G)                24|4/8|110/8|3/0|3/2|-/0|4/100|2+2|27500|2/24hrs|1||tss.6
+4-* EMC Eurocar Hatchback (G)      24|4/8|110/8|3/0|3/2|-/0|4/100|2+2|30000|2/24hrs|1||tss.6
+4-* Pontiac Stratocruiser          24|3/8|150/10|3/0|3/2|-/0|4/80|2+2b|30000|2/24hrs|2|APPS|tss.6|
+3-Snow Crawler
+4-* CAT Snowbear Standard          24|5/5|40/1|6/0|2/0|-/0|250/9700|2b+1B|186300|10/10days|1,00|Amphibious Operation 1|twl.133
+4-* CAT Snowbear Science           24|5/4|40/1|6/0|2/0|-/0|478 (378PS)/8950 (700PS)|2b+1B|407445|10/10days|1,00|Amphibious Operation 2, Datajack Port, Shop, Thermal Baffles 2 (factored in), 2 Basic Living Amenities|twl.133
+3-Sport Utility Vehicles
+4-* Ruhr. Vogelhund                24|4/3|120/9|4/3|2/2|-/8|7.5/253|2+1|257000|13/13days|3.00|ECCM 4, ECD 3, Small Turret(2 medium launch control systems 8 internal missile mounts), Radar Abosorbent Materials 1(factored in), Electronics Port (w Radio Rating 3), Thermal Baffles 1(factored in)|sota.78
+3-Sports Cars
+4-* Audi Avus                      24|3/8|250/15|3/0|1/3|-/1|3/40|2|195000|4/7days|2|Crash Cage, datajack link, optional Rigger Control Gear (does not require CF)|tss.6|
+4-* Aztechnology Atalante          24|4/8|200/12|3/0|3/3|-/0|6/40|1|400000|4/8days|2|APPS, Anti-theft IV, Enviroseal (gas), Optional Crash Cage and Datajack Port|tss.6|
+4-* Crystler-Nissan Camaro         24|4/8|110/9|3/0|2/1|-/0|5/50|2+2b|30000|2/48hrs|1||tss.6
+4-* Crystler-Nissan Camaro Turbo   24|4/8|160/10|3/0|1/1|-/0|4/60|2+2b|35000|3/72hrs|1||tss.6
+4-* EMG Slipstream                 24|3/8|225/10|3/0|1/3|-/1|4/40|2|95000|3/72hrs|2|APPS|tss.6|
+4-* Isdera Warp                    24|4/7|240/18|3/6|2/0|0/2|0/50|1+1b|400000|4/73hrs|2|Roll Bars, Datajack Port, Rigger Controls, APPS, Performance Runflat Tires, Remote mini-popup, Satt Uplink|tss.6|
+3-Subcompacts
+4-* Aztechnology Salsa (E)         24|4/8|75/5|3/0|5/1|-/0|3/60|2+2b|12500|3/48hrs|1|Modula design comes with Hardtop Module.  Flatback/Pickup module adds 15CF and costs 500, Transport Module adds 10CF ad costs 750.  any module adds 1/1 to handling|tss.6|
+4-* Daimler Benz Swatch C          24|2/7|100/5|3/0|6/4|1/0|2/40|2|80000|2/24hrs|1|APPS, Anti-Theft System V, Gridlink, optional Suncell and roof rack|tss.6|
+4-* Ford-Min Pao Commuter          24|4/8|70/4|2/0|5/1|-/0|1/40|2|7000|2/24hrs|1|electric, streamlined design|tss.6|
+4-* Ford-Min Pao Spider            24|4/8|150/10|3/0|1/1|-/0|1/80|2|18000|3/48hrs|1|APPS|tss.6|
+4-* Mitsubishi Citycab             24|3/10|90/5|2/3|6/4|3/2|1/40|1|75000|2/24hrs|1|Electric, APPS, Antitheft VII, Enviroseal, Gridlink, Learning Pool 2 (for defense decisions), optional roof rack and Roll Bars|tss.6|
+4-* Renault-Fiat Mulipla           24|4/8|90/6|3/0|4/1|0/0|4/40|2+2|10000|2/24hrs|1||tss.6|
+4-* Volkswagen Beetle III          24|3/6|90/5|3/0|6/2|-/0|5/50|2|12000|2/24hrs|1|Gridlink|tss.6|
+4-* Volkswagen Mayfly              24|3/6|75/3|3/0|6/1|0/0|3/30|2|6000|2/24hrs|1|Gridlink|tss.6|
+3-Tractors
+3-Transports-Heavy
+4-* GMC Tow Truck                  24|5/12|60/3|6/0|2/0|-/0|105/11495|2|142000|6/6 days|2.00|crash cage, load hydraulic flatbed and winch designed to cary up to rating 6 Bod vehicle (heavy transport trailer t-bird or smaller), diesel engine, 500L fuel capacity, 3km/l economy|cus.|
+3-Transports-Medium
+3-Vans
+4-* Ford E-255M Media Van          24|4/8|85/4|4/0|2/2|-/0|40/1180|1+1b|37900|2/48hrs|1|Electronics Port, Large Portable Satellite Dish, Power Amplifiers 4, Satellite Link 3|sta2.39|
+4-* Rover Journeyman               24|3/8|125/7|3/0|3/3|-/0|8/600|2+2|50000|2/24hrs|1|Minivan, APPS, TDI Engine, Datajack Port, optional Rigger Adaptation|tss.6|
+3-Other3
+4-* Audi A9 GTX Scirocco           24|3/3|140/15|3/3|2/3|2/0|3/300|2|45000|3/7days|2|Rally Car, no offroad speed change.  Roll bars, Datajack port, GPS, Rigger Control, Amphibious OPs Packages I-III, Secondary Controls, Spotlight, Satt Uplink|tss.6|
+4-* GMC MPUV                       17|5/3|40/120|2|9|4|0|2/1day|22000|1|fof.63|
+4-* LAV-98 "Devil Rat" APC         17|5/3|25/75|3|12|6|2|25/12days|250000|2|fof.64|
+4-* LAV-103 "Striker" Light Tank   17|6/4|25/75|5|15|6|2|48/24days|480000|2|fof.65|
+2-Fixed Wing Aircraft
+3-Airliners
+3-High Speed Commercial Airliners
+3-Jet Fighters
+3-Single Engine Aircraft
+3-Twin Engine Aircraft
+3-Ultralights
+3-Vectored Thrust
+4-* Renraku Tendai LAV             24|4|700/30|7/15|3/4|4/8|36/15000|3+12|20000000|-|3.00|ECM/ECCM Military, level unknown.  2 external drone racks, 2 small remote turrets, 20 Naga AP mines, 4 automatic grenade launchers|tss.6
+4-* C-60 Titan Medium Transport    17|7|150/350|5|12|4|3|70/35days|700000|2|fof.66|
+4-* Night Glider                   17|3|15/60|1|0|12|1|4/2days|45000|1|fof.62|
+4-* TYPHON Hunter                  17|3|1000/2000*|5|8|6|3|NA|8000000|NA|fra.142|
+2-Hovercraft
+3-Heavy Hovercraft
+4-* NT Vodianoi Personnel Carrier  24|4|150/10|5/6|4/3|-/4|42.5/2400|1+2+2b+2b|468600|24/24days|3.00|EnviroSeal (Gas with Cabin Overpressure), Radar Absorbent Materials 1 (factored in), Electronics Port (with Rating 3 Radio), Thermal Baffles 1 (factored in), 2 Ring Mounts|sota.78
+4-* NT Vodianoi Assault Craft      24|4|150/10|5/6|4/3|-/4|26.5/2375|1+2+2b+2b|489600|25/25days|3.00|EnviroSeal (Gas with Cabin Overpressure), Radar Absorbent Materials 1 (factored in), Electronics Port (with Rating 3 Radio), Thermal Baffles 1 (factored in), Small Turret (5 CF Ammo Bin), Medium Launch Control System, 8 Internal Missle Mounts|sota.78
+3-Light Hovercraft
+3-Medium Hovercraft
+4-* Chrysler-Nissan G14 "Swampy"   24|4|120/5|4/12|3/4|-/0|21/400||750000|10/10 days|2.0|medium turret (weapon n/i), provisions for 2 drone racks or 4CF AA missiles|tss.6|
+3-Others
+2-Rotorcraft
+3-Attack Helicopters
+4-* Eurocopter Tiger               24|3|300/21|5/5|3/3|-/5|3/1600|2|982500|-|3.00|Crash Cage, Datajack Port, Drive-by-Wire 1, ECM 2, ECCM 2, 2 External Fixed Hardpoints (located under chin), Medium Launch Control System, Rigger Adaptation, 2x3 Rocket Mounts (Wingtip)|sota.78
+4-* M-K Sperber Military Variant   24|4|350/32|5/9|5/3|-/6|2/580|2|1380000|-|3.00|ECM 5, ECCM 5, Thermal Baffles 1, 4 External Rocket Mounts and 1 Fixed Firmpoint on each Wing (8 mounts and 2 firmpoints total), Medium Launch Control System, Mini-Turret (located under chin)|sota.78
+4-* M-K Sperber Security Variant   24|4|350/32|5/5|4/3|-/5|5/880|2|1123250|-|2.00|ECM 2, ECCM 2, 2x3 External Rocket Mounts (Wingtip), Medium Launch Control System, Mini-Turret (located under chin)|sota.78
+3-Autogyros
+4-* Ilyushin-Greifswald Argus      24|3|275/20|2/6|4/3|-/5|1/25|1|200000|7/7Days|2.0|Remote Popup Micro-Turret (weapon n/i), optional pintle mount for pilot|tss.6
+4-* Northrup Mosquito PRC-51F      24|2|120/18|2/3|5/2|-/4|1/20|1|250000|4/4Days|2.0|ECM 1, ECCM 2, Micro-Turret (weapon n/i), optional missile pods|tss.6
+3-Cargo Helicopters
+3-Tilt Wing Airplanes
+3-Utility Helicopters
+4-* E-D Dorocilo(base)             24|4|350/15|5/0|3/4|-/0|55/2400|2|550000|11/10 Days|1.00|base model, no toys|tss.6
+4-* E-D Dorocilo(cargo)            24|4|350/15|5/0|3/4|-/0|555/2400|2|575000|11/10 Days|1.00|back ramp, side door|tss.6
+4-* E-D Dorocilo(commuter)         24|4|350/15|5/0|3/4|-/0|87/2400|2|600000|15/15 Days|1.00|4x2-aisle-2 bucket seats, side door|tss.6
+4-* E-D Dorocilo(Luxury)           24|4|350/15|5/0|3/4|-/0|65/2400|2|800000|18/18 Days|2.00|4 comfy bucket seats, 3 person couch + 2 foldup bendhes, 2 mahogany desks, comm/entertainment suite, satt Matrix uplink, kitchen, bar, side door |tss.6
+4-* E-D Dorocilo(Troop Carrier)    24|4|350/15|5/9|3/4|-/0|85/2400|2|750000|260/130 Days|3.00|10 oversized bucket seats, weapon rack, tac comm, 2 side doors and back ramp|tss.6
+4-* E-D Dorocilo(Drone Carrier)    24|4|350/15|5/9|3/4|-/0|305/2400|2|1050000|260/130 Days|3.00|4 external drone racks, internal storage for 2 cars or 4 Steel Lynx-sized vehicles or drones, drone rearmament and recharge facility, Speed 250 when loaded|tss.6
+4-* Fuchi Tsumukari                24|6|400/20|6/12|3/4|4/8|505/800|3+12|7500000|260/130 Days|3.00|cargo space for 12 men and a manned APC, medium remote turret(rotary autocannon), 4 remote micro-turrets(2xTwin LMG), 4CF AA missiles, 8CF AG rockets, 4CF AG missiles, 4CF air-drop AP mines|tss.6
+3-Others
+4-* COUGAR                         17|2|360/720|2|4|5|3|NA|5400000|NA|fra.143|
+4-* PRC-42F Wasp                   17|2|65/100|2|6|7|0|27/13days|274000|2|fof.70|
+4-* PRC-44F Yellowjacket           17|3|65/100|3|9|7|0|39/19days|390000|2|fof.70|
+4-* COUGAR                         17|2|360/720|2|4|5|3|NA|5400000|NA|fra.143|
+2-Ships
+3-Aircraft Carriers
+3-Corvette
+3-Frigate
+3-Merchantmen
+3-Others
+2-Submarines
+3-Attack Submarines
+3-Commercial Submarines
+3-Minisubs
+3-Patrol Submarine
+3-Seasleds
+3-Others
+2-Vector Thrust Craft
+3-Jump Jet Fighters
+3-Thunderbirds
+4-* Nizhinyi BMV-2                 24|3|250(750)/40|6/9|3/2|-/4|27.5/2375|1e+2e+2b+2b|1844750|NA|3.00|Small Turret (10 CF Ammo Bin), Medium Launch System, 4 Internal Missle Mounts|sota.78
+3-Others
+2-Special Vehicles
+3-Zeppelins
+3-Locomotives
+3-Semiballistics
+3-Snowmobile
+4-* S Snowglide                    24|-/3|70/3|2/0|5/0|-/0|2/20|2m|28600|2/24hrs|1,00|Environmental Adaptation (Artic)|twl.133
+4-* A-M Hoplite (G)                24|-/3|90/6|2/4P|1/0|-/0|0,3/34|1m|12600|2/24hrs|2,00|Amphibious Operation 1, Electronics Port w/Personal Com Unit (Rationg 4, 1.2 CF), Environmental Adaptation (Artic), Externeal Fixed Firmpoint (1 CF Ammo Bin), Turbocharging 2 (factored in)|twl.133
+4-* A-M Hoplite (F)                24|-/3|65/5|2/4P|4/0|-/0|0,3/20|1m|23600|2/24hrs|2,00|Amphibious Operation 1, Electronics Port w/Personal Com Unit (Rationg 4, 1.2 CF), Environmental Adaptation (Artic), Externeal Fixed Firmpoint (1 CF Ammo Bin), Turbocharging 1 (factored in)|twl.133
+3-Suborbitals
+3-Others
+4-* LAFAYETTE VBA                  17|3|700/14000|5|15|6|3|NA|16000000|NA|fra.142|
+!
+2-Remotes and drones
+3-Household Drones
+4-Wheeled Crawlers
+5-* Mazda Dust Devil               24|4/4|10/2|1/0|8/0|1/1|0/0  |-|1500 |2/24hrs|.5| Remote-Control Interface, Rigger Adaptation, Special Machinery (vacuum/wetvac/brushes/sprayer), Special Storage Area (liquid tanks-2l total)|ssg.122|
+5-* IFMU Mr. Green 3500            24|4/4|10/2|1/0|8/0|1/1|0/0  |-|3500 |2/24hrs|.5| Remote-Control Interface, Rigger Adaptation, Autosoft Interpreter, Autosoft (Gardening 1), Special Machinery (lawnmower/sprinkler/shears/sprayer), Special Storage Area (liquid tanks/5l)|ssg.122|
+5-* IFMU Mr. Fireman 3500          24|4/4|10/2|1/4|8/0|2/1|0/4  |-|11000|2/24hrs|1 | Remote-Control Interface, Rigger Adaptation, Autosoft Interpreter, Autosoft (Firefighting 2), Special Machinery (smoke/fire detector/sprayer), Special Storage Area (10l fire extinguisher)|ssg.122|
+5-* Renraku StreetCleaner          24|4/6|10/2|2/0|7/-|2/2|0/5  |-|7000 |2/24hrs|1 | Remote-Control Interface, Rigger Adaptation, Special Machinery (sweep and brush system), Special Storage Area (10 liter water tank)|ssg.122|
+4-Tracked Crawlers
+5-* V.R. House Helper              24|4/4|10/2|1/0|8/0|1/1|0/0  |-|1500 |2/24hrs|.5| Remote-Control Interface, Rigger Adaptation, Special Machinery (vacuum/wetvac/brushes/sprayer), Special Storage Area (liquid tanks-2l total)|ssg.122|
+5-* Mitsuhama Butlerbot            24|4/4|10/2|2/0|7/0|2/2|5/50 |-|25000|2/24hrs|1 | Remote-Control Interface, Rigger Adaptation, Robotic Pilot, Adaptation Pool 2, Fuzzy Logic Augmentation, Mechanical Arm (Strength 4), Special Machinery (cleaning items), Special Storage Area (beverage/water/cleaning tanks/5l total)|ssg.122|
+5-* GM Mr Fix-It                   24|4/4|10/2|1/0|8/0|3/1|3/170|-|27000|2/24hrs|1 | Remote-Control Interface, Rigger Adaptation, Autosoft Interpreter, Autosoft (any B/R skill at rating 3), Special Machinery (toolkit), 2 Mechanical Arms (Strength 4)|ssg.122|
+4-Walkers/Anthroforms
+5-* IFMU Mr. Bright 3000           24|4/4| 2/-|1/0|8/-|1/1|4/2  |-|6500 |2/24hrs|1 | Remote-Control Interface, Rigger Adaptation, Special Machinery (window cleaning gear/foot suction system), Special Storage Area (5 liter water tank), Winch (25 kg)|ssg.122|
+5-* IFMU Mr. Bright (household)    24|4/4| 2/-|1/0|8/-|1/1|4/5  |-|6000 |2/24hrs|1 | Remote-Control Interface, Rigger Adaptation, Special Machinery (window cleaning gear/foot suction system), Special Storage Area (5 liter water tank)|ssg.122|
+5-* Renraku Barback                24|3  |10/-|2/0|6/0|2/2|0/20 |-|44000|3/72hrs|1 | Remote-Control Interface, Rigger Adaptation, Robotic Pilot, Adaptation Pool 2, Fuzzy Logic Augmentation, 2 Mechanical Arms (Strength 6)|ssg.122|
+5-* Ares Felix the SynthCat        24|4/4|15/-|1/0|8/-|1/1|0/5  |-|9500 |2/24hrs|1 | Remote-Control Interface, Rigger Adaptation, Robotic Pilot, Improved Neural Network 1, Adaptation Pool 2|ssg.122|
+3-Crawlers
+3-Mini-Blimps
+4-* Moonlight Aerospace Gossamer   24|5|*/*|1/0|16/-|3/3|2/5|-|120000|3/72hrs|1|Speed and Accel depend on windspeed, Remote Control Interface, Rigger Adaptation, Electroncs Bay, Optional Monofilament reels and Multicore fibre controls|tss.6|
+3-Rail-mounted
+4-* Ares Sentinel                  17|5|N/A|4|12|8|3|-|40000|-|cs.89|
+4-* Ares Sentinel P                17|5|10|4|12|6|3|-|60000|-|cs.90|
+4-* Ares Guardian                  17|4/6|30/60|4|12|6|3|8hours/8days|75000|2|cs.91|
+4-* Cyclop                         17|4|8|3|6|6|3|-|40000|NA|fra.143|
+3-Skimmers
+4-* LS Sherlock Crime Analysis     24|3|75/8|1/0|8/0|2/6|1/25|-|180000|12/3 wks|2|Remote-Control Interface, Rigger Adaptation, chem sniffer 6, mads 6, mechanical arm (str 2), camera, trideo recorder|sta2.98|
+3-Trailer
+3-UAVs
+4-Fixed Wing
+5-* MCT Indrahar O-5P Surv. Drone  24|4|60(300)/20|3/0|6/0|3/6|2/100|-|108825|6/6 days|1.5|Remote-Control Interface, Rigger Adaptation, ECCM 6, Enhanced Sensors 6|sta2.39|
+4-Rotary Wing
+5-* Cyberspace Designs Dalmation   24|3|108/8|2/0|5/-|2/1|3/80|-|15800|2/24hrs|.75|Remote-Control Interface, Rigger Adaptation|sr3.312|
+4-Vectored-Thrust
+5-* Generic Surv. Drone VTOL       24|3|70/9|1/0|5/-|2/1|0/10|-|6250|2/24hrs|.75|Remote Control Interface,Rigger Adaptation,Lowlight & Thermographic Cam.|sr3.312|
+5-* Renraku Scorpion               24|4|180/18|3/9|2/3|2/4|10/75|-|25000|4/24hrs|3.0|Alternate stats while in ground mode, micro-turret (weapon n/i), 6CF reserved for more electronics and 4CF for ammo|tss.6|
+3-Walkers
+3-Special
+4-* LS Spectator Surv. Drone       24|4/4|30/4|0/0|12/0|1/0|-/0|-|67000|14/1 month|2|Remote-Control Interface, Rigger Adaptation, Micro-Recorder 6, micro-camcorder, universal receiver 4|sta2.98|
+!
+1-Vehicle Gear
+2-Vehicle weapons
+3-Standard Weapons
+4-* Ares Vermicide Autocannon      19|Autocannon|10(c)|SA|12D|45|GM|12000|GM|sr3.312|
+4-* EXOCET Omega (Missile)         19|Missile|1(m)|SS|19F|(Missile)|GM|950000|-|fra.141|
+4-* Hydrostatic Pulse Bafflers     19|Hydrostatic Pulse Bafflers|200|SS|22D(AV)|500,00|NA|15000|0,00|twl.130
+4-* Snake-Spine Whips (per arm)    19|Mechanical Tentacle|NA|SA|8M|20,00|NA|1500|0,00|twl.131
+4-* Snake-Spine Blade Arm          19|Mechanical Tentacle|NA|SA|10M|25,00|NA|2000|0,00|twl.131
+4-* Snake-Spine Elec. Discharge Arm19|Mechanical Tentacle|NA|SA|12S Stun|25,00|NA|2500|0,00|twl.131
+4-* Snake-Spine Hull Cutters       19|Mechanical Tentacle|NA|SA|6MN|50,00|NA|5000|0,00|twl.131
+4-* Water Cannon                   19|Shotgun|20|SA|6M Stun|12|GM|20000|GM|sr3.312|
+2-Drones Systems
+3-Ares Sentinel weapons pods
+4-* Sentinel Pod I                 18|5/1week|3000|2|cs.92|
+4-* Sentinel Pod II                18|6/1week|3500|2|cs.92|
+4-* Sentinel Pod III               18|6/2weeks|5000|2|cs.92|
+4-* Sentinel Pod IV                18|8/2weeks|7500|2|cs.92|
+3-Ares Sentinel Drone Storage System
+4-* Ares Sentinel Drone Storage    26|100000|1/?|1|0|cs.93
+4-* Backup Power Supply (2hours)   26|5000|1/?|1|0|cs.93
+4-* Additional Sentinel P Storage  26|5000/drone|1/?|1|0|cs.93
+4-* Additional Guardian   Storage  26|7500/drone|1/?|1|0|cs.93
+4-* Additional Weapon Pod Storage  26|1500/drone|1/?|1|0|cs.93
+4-* Additional Rearming System     26|10000|1/?|1|0|cs.93
+4-* Weatherproofing                26|10000|1/?|1|0|cs.93
+2-Engine Modifications
+3-Modifications
+3-Nitrous Oxide Injectors
+2-Control-System Modifications
+3-Adjusted Controls
+3-Advanced Drone Pilots
+3-Autonavigation Systems
+3-Contingency Maneuver Controls
+3-Remote-Control Interfaces
+3-Datajack/Other
+3-Protective System Modifications
+4-* Artic/Desert Adaptation Kit    23|0|5/1wk|1,50|Vehicle Shop|16 hrs/Vehicle B/R(4)|1|0kg|Parts Cost for Ground Vehicle: Body x 250; Parts Cost for Air Vehicle: Body x 500|twl.132
+2-Defensive Modifications
+3-Mods
+4-* "Peel 'n' Stick" Vehicle Armor 26|rating x bod^2 x 5|1/?|1|bod^2 x 2|sta2.39|
+3-Vehicle smoke generator
+4-* Charges for Smokegen. small(6) 18|4/72hrs|700|2|fof.71|
+4-* Charges for Smokegen. large(12)18|4/7days|1000|2|fof.71|
+3-Ablative vehicle armor
+4-* Abl. Vehicle Armor Level [1]   18|8/14days|700|2|fof.72|
+4-* Abl. Vehicle Armor Level [2]   18|12/14days|1600|2|fof.72|
+4-* Abl. Vehicle Armor Level [3]   18|14/21days|2500|2|fof.72|
+3-Vehicle Armor
+4-Standard Vehicle Armor
+4-Concealed Armor
+4-Ablative Armor
+4-Smart Armor System
+2-Vehicle Weapon Mounts
+3-Gunnery Recoil Adjusters
+3-Launch Control Systems
+3-Smartlink Integration Kits
+3-Weapon Customization Kits
+3-Turrets and Mounts
+4-Fixed Mounts
+4-Missile Mounts
+4-Non-Fixed Mounts
+4-Turrets
+4-Anti-Aircraft Turrets
+4-Pop-Up Turrets
+2-Electronic Systems
+3-Autosoft Interpretation Systems
+3-BattleTac FDDM Receivers
+3-BattleTac IVS Receivers
+3-ECM
+3-ECCM
+3-ED
+3-ECD
+3-Power Amplifiers
+3-Remote-Control Encryption Modlues
+3-Sensors
+3-Enhanced Sensors
+4-* Enhanced Sensors [1]           23|5000|4/7days|2|Vehicle Facility|16 hrs/Electronics B/R(4)|1|12kg||sta2.39|
+4-* Enhanced Sensors [2]           23|7500|4/10days|2.5|Vehicle Facility|32 hrs/Electronics B/R(4)|2|20kg||sta2.39|
+4-* Enhanced Sensors [3]           23|10000|5/14days|3|Vehicle Facility|48 hrs/Electronics B/R(4)|3|25kg||sta2.39|
+4-* Enhanced Sensors [4]           23|12500|6/21days|3.5|Vehicle Facility|64 hrs/Electronics B/R(4)|3|35kg||sta2.39|
+4-* Enhanced Sensors [5]           23|15000|8/30days|GM|Vehicle Facility|80 hrs/Electronics B/R(4)|6|50kg||sta2.39|
+4-* Enhanced Sensors [6]           23|20000|10/45days|GM|Vehicle Facility|96 hrs/Electronics B/R(4)|8|75kg||sta2.39|
+4-* Enhanced Sensors [7]           23|30000|12/60days|GM|Vehicle Facility|112 hrs/Electronics B/R(4)|9|110kg||sta2.39|
+4-* Enhanced Sensors [8]           23|50000|14/3months|GM|Vehicle Facility|128 hrs/Electronics B/R(4)|12|150kg||sta2.39|
+4-* Enhanced Sensors [9]           23|100000|16/6months|GM|Vehicle Facility|144 hrs/Electronics B/R(4)|16|200kg||sta2.39|
+4-* Enhanced Sensors [10]          23|500000|18/1year|GM|Vehicle Facility|160 hrs/Electronics B/R(4)|20|250kg||sta2.39|
+3-Other
+2-Accessories
+3-Amphibious Operation Packages
+3-Amphibious Operation Packages
+3-Anti-Theft Systems
+3-Seats
+3-Sidecars
+3-Spotlights
+3-Library Transponder Chips
+3-Other
+4-* Ski-Skids                      23|0|Always|0,90|Vehicle Shop|48 hrs/Vehicle B/R(2)|0|100kg x Body|Cost: 500 x (Body + Armor)|twl.133
+!!
+4-Standard accessories
+4-Tires (per tire)
+4-Sensors
+5-* VAUBAN Vehicle A.T. Lvl [1]    23|80000|1/?|1|Sensor +1|0/0|Upgrade|0||fra.141
+5-* VAUBAN Vehicle A.T. Lvl [2]    23|160000|1/?|1|Sensor +2|0/0|Upgrade|0||fra.141
+5-* VAUBAN Vehicle A.T. Lvl [3]    23|240000|1/?|1|Sensor +3|0/0|Upgrade|0||fra.141
+5-* VAUBAN Vehicle A.T. Lvl [4]    23|320000|1/?|1|Sensor +4|0/0|Upgrade|0||fra.141
+4-Weapon mounts
+5-* Pintle Mount                   23|50|1/?|1|-|0/0|0|0||sr3.312
+4-Lure Launcher
+5-* Lure Launcher AM-56 [1]        19|Lure Launcher|2|SS|-|1CF|9/12 days|20000|4|fra.141|
+5-* Lure Launcher AM-56 [2]        19|Lure Launcher|2|SS|-|2CF|9/12 days|400000|4|fra.141|
+5-* Lure Launcher AM-56 [3]        19|Lure Launcher|2|SS|-|3CF|9/12 days|60000|4|fra.141|
+5-* Lure Launcher AM-56 [4]        19|Lure Launcher|2|SS|-|4CF|9/12 days|80000|4|fra.141|
+5-* Lure Launcher AM-56 [5]        19|Lure Launcher|2|SS|-|5CF|9/12 days|100000|4|fra.141|
+5-* Lure Launcher AM-56 [6]        19|Lure Launcher|2|SS|-|6CF|9/12 days|120000|4|fra.141|
+5-* Lure Launcher AM-56 [7]        19|Lure Launcher|2|SS|-|7CF|9/12 days|140000|4|fra.141|
+5-* Lure Launcher AM-56 [8]        19|Lure Launcher|2|SS|-|8CF|9/12 days|160000|4|fra.141|
+5-* Lure Launcher AM-56 [9]        19|Lure Launcher|2|SS|-|9CF|9/12 days|180000|4|fra.141|
+5-* Lure Launcher AM-56 [10]       19|Lure Launcher|2|SS|-|10CF|9/12 days|200000|4|fra.141|
+5-* Lure Ammo AM-56 [1]            23|2000|1/?|1|Missile jammer|0/0|1|0||fra.141
+5-* Lure Ammo AM-56 [2]            23|8000|1/?|1|Missile jammer|0/0|1|0||fra.141
+5-* Lure Ammo AM-56 [3]            23|18000|1/?|1|Missile jammer|0/0|1|0||fra.141
+5-* Lure Ammo AM-56 [4]            23|32000|1/?|1|Missile jammer|0/0|1|0||fra.141
+5-* Lure Ammo AM-56 [5]            23|50000|1/?|1|Missile jammer|0/0|1|0||fra.141
+5-* Lure Ammo AM-56 [6]            23|72000|1/?|1|Missile jammer|0/0|1|0||fra.141
+5-* Lure Ammo AM-56 [7]            23|98000|1/?|1|Missile jammer|0/0|1|0||fra.141
+5-* Lure Ammo AM-56 [8]            23|128000|1/?|1|Missile jammer|0/0|1|0||fra.141
+5-* Lure Ammo AM-56 [9]            23|162000|1/?|1|Missile jammer|0/0|1|0||fra.141
+5-* Lure Ammo AM-56 [10]           23|200000|1/?|1|Missile jammer|0/0|1|0||fra.141
+4-VAUBAN Missile A.T.
+5-* VAUBAN Missile A.T. [1]        23|36000|1/?|1|Sensor +1|0/0|Upgrade|0||fra.141
+5-* VAUBAN Missile A.T. [2]        23|72000|1/?|1|Sensor +2|0/0|Upgrade|0||fra.141
+5-* VAUBAN Missile A.T. [3]        23|108000|1/?|1|Sensor +3|0/0|Upgrade|0||fra.141
+5-* VAUBAN Missile A.T. [4]        23|144000|1/?|1|Sensor +4|0/0|Upgrade|0||fra.141
+!
+1-Rigger Gear
+2-Special Gear
+2-Remote Control Deck & Acc
+3-* Remote Control Deck Rating [1] 21|-|1|3|4/72hrs|5000|2|sr3.306|
+3-* Remote Control Deck Rating [2] 21|-|2|3|4/72hrs|10000|2|sr3.306|
+3-* Remote Control Deck Rating [3] 21|-|3|3|4/72hrs|15000|2|sr3.306|
+3-* Remote Control Deck Rating [4] 21|-|4|3|4/72hrs|20000|2|sr3.306|
+3-* Remote Control Deck Rating [5] 21|-|5|3|4/72hrs|25000|2|sr3.306|
+3-* Remote Control Deck Rating [6] 21|-|6|3|4/72hrs|30000|2|sr3.306|
+3-* Remote Control Deck Rating [7] 21|-|7|3|4/72hrs|35000|2|sr3.306|
+3-* Remote Control Deck Rating [8] 21|-|8|3|4/72hrs|40000|2|sr3.306|
+3-* Remote Control Deck Rating [9] 21|-|9|3|4/72hrs|45000|2|sr3.306|
+3-* Remote Control Deck Rating[10] 21|-|10|3|4/72hrs|50000|2|sr3.306|
+2-RC Deck Accessories
+3-R-C Biofeedback Filters
+3-R-C ECCM Modules
+4-* R-C ECCM Rating [1]            26|7500|4/7days|2|1.5|sr3.306|
+4-* R-C ECCM Rating [2]            26|15000|4/7days|2|1.5|sr3.306|
+4-* R-C ECCM Rating [3]            26|22500|4/7day|2|1.5|sr3.306|
+4-* R-C ECCM Rating [4]            26|60000|6/14days|3|2|sr3.306|
+4-* R-C ECCM Rating [5]            26|75000|6/14days|3|2|sr3.306|
+4-* R-C ECCM Rating [6]            26|90000|6/14days|3|2|sr3.306|
+4-* R-C ECCM Rating [7]            26|245000|12/28days|4|2.5|sr3.306|
+4-* R-C ECCM Rating [8]            26|280000|12/28days|4|2.5|sr3.306|
+4-* R-C ECCM Rating [9]            26|315000|12/28days|4|2.5|sr3.306|
+4-* R-C ECCM Rating [10]           26|500000|18/45days|GM|2.5|sr3.306|
+3-R-C Encryption Modules
+3-R-C Decryption Modules
+3-R-C Protocol Emulation Modules
+3-Signal Amplifiers
+3-Storage Memory
+3-Autosofts
+4-Clearsight
+4-Datallink
+4-Electronic Warfare
+4-Performance Profile(Vehicle)
+4-Sharpshooter
+3-Other
+!  Last Line
