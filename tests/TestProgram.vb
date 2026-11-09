@@ -144,15 +144,15 @@ Public Module TestProgram
     End Sub
 
     Private Sub TestForwardCompatibility(folder As String)
-        Dim file As String = System.IO.Path.Combine(folder, "unsupported.json")
-        File.WriteAllText(file, "{""Format"":""nsrcgii.vbnet.9"",""Edition"":3}")
-        ExpectFailure(Sub() CharacterSheet.Open(file))
-        File.WriteAllText(file, "{""Format"":""nsrcgii.vbnet.1"",""Edition"":3,""FutureCharacterField"":42}")
-        ExpectFailure(Sub() CharacterSheet.Open(file))
-        File.WriteAllText(file, "{""Format"":""nsrcgii.vbnet.1"",""Edition"":3,""Skills"":[{""Name"":""Pistols"",""Rating"":6,""FutureSkillFlag"":true}]}")
-        ExpectFailure(Sub() CharacterSheet.Open(file))
+        Dim testPath As String = System.IO.Path.Combine(folder, "unsupported.json")
+        System.IO.File.WriteAllText(testPath, "{""Format"":""nsrcgii.vbnet.9"",""Edition"":3}")
+        ExpectFailure(Sub() CharacterSheet.Open(testPath))
+        System.IO.File.WriteAllText(testPath, "{""Format"":""nsrcgii.vbnet.1"",""Edition"":3,""FutureCharacterField"":42}")
+        ExpectFailure(Sub() CharacterSheet.Open(testPath))
+        System.IO.File.WriteAllText(testPath, "{""Format"":""nsrcgii.vbnet.1"",""Edition"":3,""Skills"":[{""Name"":""Pistols"",""Rating"":6,""FutureSkillFlag"":true}]}")
+        ExpectFailure(Sub() CharacterSheet.Open(testPath))
         Dim c As New CharacterSheet With {.Format = "nsrcgii.vbnet.9"}
-        ExpectFailure(Sub() c.Save(file))
+        ExpectFailure(Sub() c.Save(testPath))
     End Sub
 
     Private Sub TestLegacy(sample As String)
