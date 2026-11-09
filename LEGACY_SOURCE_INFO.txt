@@ -1,0 +1,8 @@
+NSRCG II Visual Basic .NET Rewrite — legacy input provenance
+Source: nsrcg.zip, uploaded in conversation 2026-11-09.
+Archive: four NSRCG3*.CAB installer cabinets plus Setup.exe and setup manifest.
+Installer is not VB6 source code. 74 files were recovered from cabinet payloads.
+This bundle contains a filtered working copy of 12 DAT catalog files and one
+example .sr3 character. Additional installer components and DLLs are omitted.
+Legacy source data and code are not validated against SR3 rulebooks.
+This is a clean new VB.NET source project, not a hex-edited executable.
