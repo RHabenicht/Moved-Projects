@@ -51,3 +51,21 @@ The editor can also browse another original NSRCG data directory via **File → 
 ## GitHub destination
 
 The Visual Basic source and filtered original catalog files are published at the **private repository** `RHabenicht/NSRCG-II`. GitHub Actions produces a Windows x64 build artifact for each main-branch commit. `RHabenicht/RunnerForge` is a separate port and is not modified by this repository. See `GITHUB_PUBLISH.md` for the repository status.
+
+## Windows installer (.exe)
+
+The GitHub Actions [Windows build workflow](https://github.com/RHabenicht/NSRCG-II/actions/workflows/windows-build.yml) builds two downloadable artifacts for each commit to `main`:
+
+- **NSRCG-II-Setup-EXE** contains the `NSRCG-II-Setup-0.1.0-win-x64.exe` Windows installer, built with Inno Setup 6.3+. Download the artifact from the workflow run, extract the GitHub artifact ZIP, then run the setup executable. The installer includes the self-contained .NET 10 Windows x64 program and the original filtered `LegacyData` files, creates a Start Menu entry, offers a desktop shortcut, and supports removal through Windows Installed Apps.
+- **NSRCG-II-Windows-x64** contains a portable build for manual use without installing. The `NSRCG-II.exe` must remain alongside the `LegacyData` folder.
+
+The installer installs per-user into `%LOCALAPPDATA%\\Programs\\NSRCG II` and does not request administrator privileges. It targets Windows 10/11 x64 and x64-compatible Windows 11 Arm64 systems. It is not digitally signed; Windows SmartScreen may display a reputation warning. The source and catalog are **work in progress**, and successfully packaging the app does not establish complete Shadowrun 3 rules correctness or interactive Windows 10/11 acceptance.
+
+For a local setup build on Windows with Inno Setup 6.3+ installed:
+
+```powershell
+.\\publish-win-x64.ps1
+& "${env:ProgramFiles(x86)}\\Inno Setup 6\\ISCC.exe" .\\installer\\NSRCG-II.iss
+```
+
+The resulting installer is written under `installer-output/`. The GitHub workflow also performs unattended installation, checks the executable and data files, and then uninstalls as a packaging smoke test.
