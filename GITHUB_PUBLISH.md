@@ -2,8 +2,11 @@
 
 Repository: https://github.com/RHabenicht/NSRCG-II (private)
 
-The Visual Basic .NET source, legacy SR3 sample, smoke tests and all 12 filtered DAT catalog files have been committed to the repository. An automated Windows x64 build is configured at .github/workflows/windows-build.yml.
+This repository contains the Visual Basic .NET source, a legacy SR3 sample, smoke tests, and 12 filtered DAT catalog files. The Windows workflow builds the self-contained application and installer, then checks launch, installation, and uninstall.
 
-The program is an initial Windows Forms rewrite, not a full reproduction of all original NSRCG functionality. GitHub compilation does not replace Windows 10/11 interactive acceptance tests.
+The latest main-branch run, on November 9, 2026, completed successfully. It uploaded the `NSRCG-II-Setup-EXE` and `NSRCG-II-Windows-x64` artifacts:
+https://github.com/RHabenicht/NSRCG-II/actions/runs/42608537540
 
-The separate port is RHabenicht/RunnerForge; no changes to that repository are part of this publishing operation.
+The program is an initial Windows Forms rewrite. Full NSRCG feature coverage and interactive acceptance on Windows 10/11 remain under development.
+
+The Go/Python port is maintained separately as `RHabenicht/RunnerForge`.
