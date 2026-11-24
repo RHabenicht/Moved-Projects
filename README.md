@@ -1,6 +1,6 @@
 # NSRCG II — Visual Basic .NET rewrite
 
-A standalone **Shadowrun Third Edition** character-editor modernization of the original NSRCG (legacy Visual Basic 6 installer from 2005). This is a **new VB.NET Windows Forms project**, not the separate Go/Python-port project now named RunnerForge.
+A standalone **Shadowrun Third Edition** character-editor recreation of the abandoned original NSRCG (legacy Visual Basic 6 installer from 2005). Attempts were made to contact the original author without success. This is a **new VB.NET Windows Forms project**, not the separate Go/Python-port project named RunnerForge. It does not claim to be the original program or an official continuation.
 
 **Development status: initial source implementation, not a tested release.** The original ZIP contains installer binaries and data files, not VB6 forms/source code. This project is therefore a source rewrite using the original `.DAT` and `.sr3` formats for reference; it is not a direct recompilation of the historic program.
 
@@ -48,15 +48,16 @@ The editor can also browse another original NSRCG data directory via **File → 
 - No Windows machine, .NET SDK or VB.NET compiler was available for compilation or GUI acceptance testing while preparing this version.
 - No legacy companion EXE files are run or installed.
 
-## GitHub destination
+## Project home
 
-The Visual Basic source and filtered original catalog files are published at the **private repository** `RHabenicht/NSRCG-II`. GitHub Actions produces a Windows x64 build artifact for each main-branch commit. `RHabenicht/RunnerForge` is a separate port and is not modified by this repository. See `GITHUB_PUBLISH.md` for the repository status.
+Source code and downloads are hosted at https://sourceforge.net/projects/nsrcg-ii/.
+`RunnerForge` is a separate project.
 
 ## Windows installer (.exe)
 
-The GitHub Actions [Windows build workflow](https://github.com/RHabenicht/NSRCG-II/actions/workflows/windows-build.yml) builds two downloadable artifacts for each commit to `main`:
+The Windows build produces two downloadable artifacts:
 
-- **NSRCG-II-Setup-EXE** contains the `NSRCG-II-Setup-0.1.0-win-x64.exe` Windows installer, built with Inno Setup 6.3+. Download the artifact from the workflow run, extract the GitHub artifact ZIP, then run the setup executable. The installer includes the self-contained .NET 10 Windows x64 program and the original filtered `LegacyData` files, creates a Start Menu entry, offers a desktop shortcut, and supports removal through Windows Installed Apps.
+- **NSRCG-II-Setup-EXE** contains the `NSRCG-II-Setup-0.1.0-win-x64.exe` Windows installer, built with Inno Setup 6.3+. The installer includes the self-contained .NET 10 Windows x64 program and the original filtered `LegacyData` files, creates a Start Menu entry, offers a desktop shortcut, and supports removal through Windows Installed Apps.
 - **NSRCG-II-Windows-x64** contains a portable build for manual use without installing. The `NSRCG-II.exe` must remain alongside the `LegacyData` folder.
 
 The installer installs per-user into `%LOCALAPPDATA%\\Programs\\NSRCG II` and does not request administrator privileges. It targets Windows 10/11 x64 and x64-compatible Windows 11 Arm64 systems. It is not digitally signed; Windows SmartScreen may display a reputation warning. The source and catalog are **work in progress**, and successfully packaging the app does not establish complete Shadowrun 3 rules correctness or interactive Windows 10/11 acceptance.
@@ -68,4 +69,11 @@ For a local setup build on Windows with Inno Setup 6.3+ installed:
 & "${env:ProgramFiles(x86)}\\Inno Setup 6\\ISCC.exe" .\\installer\\NSRCG-II.iss
 ```
 
-The resulting installer is written under `installer-output/`. The GitHub workflow also performs unattended installation, checks the executable and data files, and then uninstalls as a packaging smoke test.
+The resulting installer is written under `installer-output/`. The packaging checks perform unattended installation, check the executable and data files, and then uninstall it.
+
+## License
+
+The recreation source code is licensed under GPLv3 or later. The `LegacyData`
+directory contains compatibility data recovered from the abandoned original
+NSRCG distribution after unsuccessful attempts to contact its author. No
+ownership of the original work is claimed.
