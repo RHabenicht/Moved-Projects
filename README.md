@@ -13,7 +13,7 @@ This is the single GitHub directory for NightLife's projects hosted or backed up
 | NSRCG II | [Project, code and downloads](https://sourceforge.net/projects/nsrcg-ii/) | Moved; this directory replaces its former GitHub pointer |
 | RunnerForge | [Project, code and downloads](https://sourceforge.net/projects/runnerforge/) | Verified source backup and preserved development installer; GitHub remains active |
 | SR1e-3eGamebot | [Project and code](https://sourceforge.net/projects/sr1e-3e-gamebot/) | Verified master and Python-port branch backups; GitHub remains active |
-| The Shop | [Project, code and downloads](https://sourceforge.net/projects/the-shop-nightlife/) | Verified source backup; release and installer-backup import submitted |
+| The Shop | [Project, code and downloads](https://sourceforge.net/projects/the-shop-nightlife/) | Verified source, published release, and preserved installer-artifact backups; GitHub remains active |
 | TimeStamps | [Project, code and downloads](https://sourceforge.net/projects/timestamps-nightlife/) | Verified source backup, all five branches, and preserved corrected 2.5 installer; GitHub remains active |
 
 ## Preserved Windows installers
